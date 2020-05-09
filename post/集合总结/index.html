@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="en-us">
+  <head>
+    <title>对自己所知集合知识的梳理 // MyProgramLife</title>
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="https://myprogramlife.github.io/css/main.min.f90f5edd436ec7b74ad05479a05705770306911f721193e7845948fb07fe1335.css" />
+
+    
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="对自己所知集合知识的梳理"/>
+<meta name="twitter:description" content="作者：岳争 Q Q ：772768701 前言：  读完本文大概需要30分钟左右，本文有大量的实例代码和典型例题帮助大家理解java集合 。虽然本人学识浅薄，仅靠一篇文章恐怕搞不定。但读完本文最起码能让你搞懂集合的70%以上，至于熟练运用，还是得大量的练习为基础。（拷贝的上一篇多线程的前言嘻嘻） 第一个问题什么是集合？ 答：集合就是储存数据的容器。 那数值和集合的区别是什么？ 答：1.数组一旦定义，长度不可改变，集合定义后长度可以改变 2.集合可以存储不同数据类型的元素，素组只能存储相同苏剧类型的元素 3.数组可以存储任何数据类型，集合只能存储引用数据类型 Collection Collection的常用方法：  Boolean add( ); //向集合中添加一个元素 Boolean addAll( ); //将指定集合中的所有元素添加到该集合 void clear( ); //清空该集合中的所有元素 Boolean remove( ); //删除集合中的指定元素 Boolean removeAll( ); //删除该集合中指定集合的所有元素 Boolean contains( ); //判断该集合是否包含此元素 Boolean containsAll( ); //判断该集合是否包含指定集合 Boolean retainsAll( ); //从该集合中保存指定集合元素，其他的全部删除 int size( ); //返回集合的长度 Boolean isEmpty( ); //判断该集合是否为空 ObjecttoArray( ); //返回包含该集合所有元素的数组 Iterator iterator( ); //放回该集合的迭代器   List List 特点： List继承了父类Collection，具有Collection中的所有方法。List存储元素是有序可重复的，主要实现List的子类有:LinkedList、AarrayList、Vector； List 特有功能  viod add( int index,Obejct obj ); //在指定位置添加元素 Object remove( int index); //根据指定索引删除元素，并放回该元素 int indexOf( Object obj ); //返回指定元素在该集合第一次出现的位置 Object get( int index ); //获取指定位置的元素 List subList( int fromIndex, int toIndex ); //截取集合   LinkedList LinkedList特点： 底层由链表组成，查询慢，增删快，线程不安全，效率高，可以存放重复的元素；  ArrayList ArrayList实现原理： 由数组组成，数组初始长度为10，当超过这个长度数组就会扩容，每次扩容会定义一个当前长度加上当前长度的二分之一长度新数组，进行数组拷贝; ArrayList特点： 底层由数组组成，查询快，增删慢，线程不安全，效率高，可以存放重复的元素。 多线程下如何使用ArrayList： ArrayList是线程不安全的，但是可以通过Collections中的synchronizedList方法将其转换为线程安全的集合在进行使用  List list = new ArrayList();List synchronizedlist = Collections."/>
+
+    <meta property="og:title" content="对自己所知集合知识的梳理" />
+<meta property="og:description" content="作者：岳争 Q Q ：772768701 前言：  读完本文大概需要30分钟左右，本文有大量的实例代码和典型例题帮助大家理解java集合 。虽然本人学识浅薄，仅靠一篇文章恐怕搞不定。但读完本文最起码能让你搞懂集合的70%以上，至于熟练运用，还是得大量的练习为基础。（拷贝的上一篇多线程的前言嘻嘻） 第一个问题什么是集合？ 答：集合就是储存数据的容器。 那数值和集合的区别是什么？ 答：1.数组一旦定义，长度不可改变，集合定义后长度可以改变 2.集合可以存储不同数据类型的元素，素组只能存储相同苏剧类型的元素 3.数组可以存储任何数据类型，集合只能存储引用数据类型 Collection Collection的常用方法：  Boolean add( ); //向集合中添加一个元素 Boolean addAll( ); //将指定集合中的所有元素添加到该集合 void clear( ); //清空该集合中的所有元素 Boolean remove( ); //删除集合中的指定元素 Boolean removeAll( ); //删除该集合中指定集合的所有元素 Boolean contains( ); //判断该集合是否包含此元素 Boolean containsAll( ); //判断该集合是否包含指定集合 Boolean retainsAll( ); //从该集合中保存指定集合元素，其他的全部删除 int size( ); //返回集合的长度 Boolean isEmpty( ); //判断该集合是否为空 ObjecttoArray( ); //返回包含该集合所有元素的数组 Iterator iterator( ); //放回该集合的迭代器   List List 特点： List继承了父类Collection，具有Collection中的所有方法。List存储元素是有序可重复的，主要实现List的子类有:LinkedList、AarrayList、Vector； List 特有功能  viod add( int index,Obejct obj ); //在指定位置添加元素 Object remove( int index); //根据指定索引删除元素，并放回该元素 int indexOf( Object obj ); //返回指定元素在该集合第一次出现的位置 Object get( int index ); //获取指定位置的元素 List subList( int fromIndex, int toIndex ); //截取集合   LinkedList LinkedList特点： 底层由链表组成，查询慢，增删快，线程不安全，效率高，可以存放重复的元素；  ArrayList ArrayList实现原理： 由数组组成，数组初始长度为10，当超过这个长度数组就会扩容，每次扩容会定义一个当前长度加上当前长度的二分之一长度新数组，进行数组拷贝; ArrayList特点： 底层由数组组成，查询快，增删慢，线程不安全，效率高，可以存放重复的元素。 多线程下如何使用ArrayList： ArrayList是线程不安全的，但是可以通过Collections中的synchronizedList方法将其转换为线程安全的集合在进行使用  List list = new ArrayList();List synchronizedlist = Collections." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://myprogramlife.github.io/post/%E9%9B%86%E5%90%88%E6%80%BB%E7%BB%93/" />
+<meta property="article:published_time" content="2020-04-23T16:30:00+08:00" />
+<meta property="article:modified_time" content="2020-04-23T16:30:00+08:00" />
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="https://myprogramlife.github.io/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <h1>MyProgramLife</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+      <div class="app-header-social">
+        
+      </div>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">对自己所知集合知识的梳理</h1>
+      <div class="post-meta">
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-calendar">
+  <title>calendar</title>
+  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line>
+</svg>
+          Apr 23, 2020
+        </div>
+        <div>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-clock">
+  <title>clock</title>
+  <circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline>
+</svg>
+          3 min read
+        </div></div>
+    </header>
+    <div class="post-content">
+      <h3 id="作者岳争">作者：岳争</h3>
+<h3 id="q-q-772768701">Q Q ：772768701</h3>
+<h2 id="前言">前言：</h2>
+<p>  <!-- raw HTML omitted -->读完本文大概需要30分钟左右，本文有大量的实例代码和典型例题帮助大家理解java集合 。虽然本人学识浅薄，仅靠一篇文章恐怕搞不定。但读完本文最起码能让你搞懂集合的70%以上，至于熟练运用，还是得大量的练习为基础。（拷贝的上一篇多线程的前言嘻嘻）<!-- raw HTML omitted --></p>
+<hr>
+<h2 id="第一个问题什么是集合">第一个问题什么是集合？</h2>
+<h3 id="答集合就是储存数据的容器">答：集合就是储存数据的容器。</h3>
+<h2 id="那数值和集合的区别是什么">那数值和集合的区别是什么？</h2>
+<h3 id="答1数组一旦定义长度不可改变集合定义后长度可以改变">答：1.数组一旦定义，长度不可改变，集合定义后长度可以改变</h3>
+<h3 id="emspemsp2集合可以存储不同数据类型的元素素组只能存储相同苏剧类型的元素">  2.集合可以存储不同数据类型的元素，素组只能存储相同苏剧类型的元素</h3>
+<h3 id="emspemsp3数组可以存储任何数据类型集合只能存储引用数据类型">  3.数组可以存储任何数据类型，集合只能存储引用数据类型</h3>
+<!-- raw HTML omitted -->
+<h1 id="collection">Collection</h1>
+<h3 id="collection的常用方法">Collection的常用方法：</h3>
+<ul>
+<li>Boolean add( );  //向集合中添加一个元素</li>
+<li>Boolean addAll( ); //将指定集合中的所有元素添加到该集合</li>
+<li>void clear( ); //清空该集合中的所有元素</li>
+<li>Boolean remove( ); //删除集合中的指定元素</li>
+<li>Boolean removeAll( ); //删除该集合中指定集合的所有元素</li>
+<li>Boolean contains( ); //判断该集合是否包含此元素</li>
+<li>Boolean containsAll( ); //判断该集合是否包含指定集合</li>
+<li>Boolean retainsAll( ); //从该集合中保存指定集合元素，其他的全部删除</li>
+<li>int size( ); //返回集合的长度</li>
+<li>Boolean isEmpty( ); //判断该集合是否为空</li>
+<li>Object<input disabled="" type="checkbox">  toArray( ); //返回包含该集合所有元素的数组</li>
+<li>Iterator iterator( ); //放回该集合的迭代器</li>
+</ul>
+<hr>
+<h2 id="list">List</h2>
+<h4 id="list-特点">List 特点：</h4>
+<pre><code>List继承了父类Collection，具有Collection中的所有方法。List存储元素是有序可重复的，主要实现List的子类有:LinkedList、AarrayList、Vector；
+</code></pre>
+<h4 id="list-特有功能">List 特有功能</h4>
+<ul>
+<li>viod add( int index,Obejct obj ); //在指定位置添加元素</li>
+<li>Object remove( int index); //根据指定索引删除元素，并放回该元素</li>
+<li>int indexOf( Object obj ); //返回指定元素在该集合第一次出现的位置</li>
+<li>Object get( int index ); //获取指定位置的元素</li>
+<li>List subList( int fromIndex, int toIndex ); //截取集合</li>
+</ul>
+<hr>
+<h2 id="linkedlist">LinkedList</h2>
+<h4 id="linkedlist特点">LinkedList特点：</h4>
+<pre><code>底层由链表组成，查询慢，增删快，线程不安全，效率高，可以存放重复的元素；
+</code></pre>
+<hr>
+<h2 id="arraylist">ArrayList</h2>
+<h4 id="arraylist实现原理">ArrayList实现原理：</h4>
+<pre><code>由数组组成，数组初始长度为10，当超过这个长度数组就会扩容，每次扩容会定义一个当前长度加上当前长度的二分之一长度新数组，进行数组拷贝;
+</code></pre>
+<h4 id="arraylist特点">ArrayList特点：</h4>
+<pre><code>底层由数组组成，查询快，增删慢，线程不安全，效率高，可以存放重复的元素。
+</code></pre>
+<h4 id="多线程下如何使用arraylist">多线程下如何使用ArrayList：</h4>
+<pre><code>ArrayList是线程不安全的，但是可以通过Collections中的synchronizedList方法将其转换为线程安全的集合在进行使用
+</code></pre>
+<pre><code>        List list = new ArrayList();
+        List synchronizedlist = 
+             Collections.synchronizedList(list);
+</code></pre><hr>
+<h2 id="vector">Vector</h2>
+<h4 id="vector特点">Vector特点：</h4>
+<pre><code>底层由数组实现，查询快，增删慢，Vector方法中加了synchronzied，线程是安全的，但是性能上要比ArrayList差
+</code></pre>
+<hr>
+<h2 id="set">Set</h2>
+<pre><code>Set特点：没有顺序，不可重复
+</code></pre>
+<hr>
+<h3 id="hashset">HashSet</h3>
+<h4 id="hashset实现原理">HashSet实现原理：</h4>
+<pre><code>与HashMap实现原理一样，以key方式存放，value为null
+</code></pre>
+<h4 id="hashset特点">HashSet特点：</h4>
+<pre><code>元素无序且唯一，线程不安全，效率高，可以存储null元素，元素的唯一性是靠所存储元素类型是否重写hashCode()和equals()方法来保证的，如果没有重写这两个方法，则无法保证元素的唯一性。
+</code></pre>
+<h4 id="拓展1hashcode与equals">拓展1：hashcode与equals</h4>
+<pre><code>1. 如果两个对象相等，那么他们俩的hashcode一定相等
+2. 两个对象相等，对两个equals方法返回为true
+3. 两个对象的hashcode相等，他们也不一定相等
+4. equals被重写，hashcode也要被重写
+</code></pre>
+<h4 id="拓展2-与-equals">拓展2：== 与 equals</h4>
+<pre><code>1. ==是判断两个变量或实例是不是指向同一个内存空间 equals是判断两个变量或实例所指向的内存空间的值是不是相同
+2. ==是指对内存地址进行比较 equals()是对字符串的内容进行比较
+3  ==指引用是否相同 equals()指的是值是否相同
+</code></pre>
+<hr>
+<h3 id="treeset">TreeSet</h3>
+<h4 id="treeset特点">TreeSet特点：</h4>
+<pre><code>底层数据结构采用二叉树来实现，元素唯一且已经排好序；唯一性同样需要重写hashCode和equals()方法，二叉树结构保证了元素的有序性。根据构造方法不同，分为自然排序（无参构造）和比较器排序（有参构造），自然排序要求元素必须实现
+</code></pre>
+<hr>
+<h3 id="linkedhashset">LinkedHashSet</h3>
+<h4 id="linkedhshset">LinkedhSHSet</h4>
+<pre><code>底层数据结构采用链表和哈希表共同实现，链表保证了元素的顺序与存储顺序一致，哈希表保证了元素的唯一性。线程不安全，效率高。
+</code></pre>
+<hr>
+<h2 id="list-和-set-总结">List 和 Set 总结</h2>
+<ul>
+<li>List,Set都是继承自Collection接口</li>
+<li>List特点：元素有放入顺序，元素可重复 ，Set特点：元素无放入顺序，元素不可重复，重复元素会覆盖掉，常用的实现类有 ArrayList、LinkedList 和 Vector。</li>
+<li>一个无序（存入和取出顺序有可能不一致）容器，不可以存储重复元素，只允许存入一个null元素，必须保证元素唯一性。Set 接口常用实现类是 HashSet、LinkedHashSet 以及 TreeSet。</li>
+<li>Set和List对比：<br>
+Set：检索元素效率低下，删除和插入效率高，插入和删除不会引起元素位置改变。<br>
+List：和数组类似，List可以动态增长，查找元素效率高，插入删除元素效率低，因为会引起其他元素位置改变</li>
+</ul>
+<hr>
+<h1 id="map">Map</h1>
+<pre><code>Map用来存储映射关系的数据，Map里保存着两种数据key和value，每一个value都对应一个唯一的key，key不可重复，只能存储一个null，value可以重复，可以存在多个null的value
+</code></pre>
+<h3 id="map的主要方法">Map的主要方法</h3>
+<ul>
+<li>Object put( Object key,Obejct value); //添加键值对，key存在则覆盖</li>
+<li>void putAll( Map m ); //添加指定Map结合中所有的键值对</li>
+<li>Object  remove( Object key ); //删除指定key对应的键值对，返回该Key对应value</li>
+<li>void clear( ); //删除该集合中的所有元素</li>
+<li>boolean containKey( Object key ); //判断该集合中是否包含指定key</li>
+<li>boolean containsValue( Object value ); //判断该集合中是否包含指定value</li>
+<li>Object get( Object key ); //根据指定key获取对应的value</li>
+<li>Set keySet( ); //返回该Map中所有key组成的set集合</li>
+<li>Collection values(); //返回该Map所有value组成的Conllection</li>
+<li>boolean isEmpty( ); //判断Map结合是否为空</li>
+</ul>
+<h3 id="map的实现类">Map的实现类</h3>
+<ul>
+<li>HashMap</li>
+<li>LinkedHashMap</li>
+<li>TreeMap</li>
+<li>Hashtable</li>
+<li>WeakHashMap</li>
+</ul>
+<hr>
+<h4 id="hashmap和hashtable的比较">HashMap和HashTable的比较</h4>
+<p>相同点：</p>
+<ul>
+<li>用作key的对象必须实现了hashcode和equest方法</li>
+<li>不能保证其中键值对的顺序</li>
+<li>尽量不要使用可变的对象作为Key
+不同点：</li>
+<li>线程安全：HashTable是同步的，这个类中的一些方法加上了synchronized关键字，保证了HashTable中对象是线程安全的</li>
+<li>空值：HashMap可以让你将空值作为一个表的条目的key或value，但是HashTable不允许存放空值，HashMap得key最多可以存放一个空值，Value可以存放任意个空值</li>
+<li>性能：HashMap性能最好，HashTable性能最差</li>
+</ul>
+<hr>
+<h4 id="treemap">TreeMap</h4>
+<p>TreeMap的特殊方法：</p>
+<ul>
+<li>Map.Entry firstEntry(); //返回最小key所对应的的键值对，如果Mao为空，则返回null</li>
+<li>Object firstkey(); //返回最小的key，如果Mao为空，返回null</li>
+<li>Map.Entry lastEntry(); //返回最大key所对应的键值对，如果Map为空，返回null</li>
+<li>Object lastkey(); //返回最大的key，如果Map没空，返回null</li>
+<li>Map.Entry higherEntry(); //返回位于key后一位的键值对，如果为空则返回null</li>
+<li>Map.Entry lowerEntry(); //返回位于key前一位的键值对，如果为空返回null</li>
+<li>Object lowerkey(); //返回位于key前一位key值，如果为空返回null</li>
+</ul>
+<p>实现SortMap接口</p>
+<pre><code>基于红黑色对所有的key进行排序，排序方式：自然排序和定制排序，Treemap的key比TreeSet的形式存储，对key的要求和对TreeSet的要求一致
+</code></pre>
+<p>如何决定使用 HashMap 还是 TreeMap？</p>
+<pre><code>对于在Map中插入、删除和定位元素这类操作，HashMap是最好的选择。然而，假如你需要对一个有序的key集合进行遍历，TreeMap是更好的选择。基于你的collection的大小，也许向HashMap中添加元素会更快，将map换为TreeMap进行有序key的遍历。
+</code></pre>
+<hr>
+<h4 id="小结">小结</h4>
+<pre><code>HashMap：非线程安全
+HashMap：基于哈希表实现。使用HashMap要求添加的键类明确定了hashCode()和equals()[可以重写hashCode()和equals()]，为了优化HashMap空间的使用，您可以调优初始容量和负载因子。
+TreeMap：非线程安全基于红黑树实现。TreeMap没有调优选项，因为该树总处于平衡状态。
+</code></pre>
+<hr>
+<h1 id="遍历集合的方法">遍历集合的方法</h1>
+<ol>
+<li>遍历List集合</li>
+</ol>
+<pre><code>public lass Demo_List{
+    public static void main(String[] args){
+        List&lt;Integer&gt; list = new LinkedList&lt;&gt;();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		list.add(5);
+		list.add(6);
+
+        // 1.for循环遍历
+        for(int i=0; i&lt;list.size(); i++){
+            	System.out.println(list.get(i)+&quot;  &quot;);
+            }
+        // 2.foreach遍历
+        for(Integer i: list){
+	System.out.println(i + &quot;  &quot;);
+        }
+        // 3.Iterator遍历
+        Iterator&lt;Integer&gt; it = list.iterator();
+while (it.hasNext()) {
+	System.out.println(it.next()+&quot;  &quot;);
+        }
+    }
+}
+</code></pre><ol start="2">
+<li>遍历Set集合</li>
+</ol>
+<pre><code>public lass Demo_Set{
+    public static void main(String[] args){
+        Set set = new HashSet();
+        set.add(1);
+		set.add(2);
+		set.add(3);
+		set.add(4);
+		set.add(5);
+		set.add(6);
+
+        // 1.for循环遍历
+        for(int i=0; i&lt;set.size(); i++){
+            System.out.println(set.get(i)+&quot;  &quot;);
+          }
+
+        // 2.foreach遍历
+        for (String str : set) {
+            System.out.println(str);
+            }
+
+        // 3.Iterator遍历
+        Iterator it = set.iterator();
+        while (it.hasNext()) {
+            String str = it.next();
+            System.out.println(str);
+        }   
+    ｝
+｝
+</code></pre><ol start="3">
+<li>遍历Map集合</li>
+</ol>
+<pre><code>public class Dome_Map {
+      public static void main(String[] args) {
+        Map&lt;Integer, String&gt; map = 
+                        new HashMap&lt;Integer, String&gt;();
+          map.put(1, &quot;a&quot;);
+          map.put(2, &quot;b&quot;);
+          map.put(3, &quot;ab&quot;);
+          map.put(4, &quot;ac&quot;);
+          map.put(5, &quot;bc&quot;);
+         
+         // 第一种：通过Map.keySet遍历key和value
+         for (Integer in : map.keySet()) {     
+             String str = map.get(in);
+             System.out.println(in + &quot;     &quot; + str);
+         }
+         // 第二种：通过Map.entrySet使用iterator遍历key和value
+         Iterator&lt;Map.Entry&lt;Integer, String&gt;&gt; it = 
+                                map.entrySet().iterator();
+             while (it.hasNext()) {
+              Map.Entry&lt;Integer, String&gt; entry = it.next();
+                System.out.println(&quot;key= &quot; + entry.getKey()  
+                        + &quot; and value= &quot; + entry.getValue());
+         }
+         // 第三种：推荐，尤其是容量大时
+         //通过Map.entrySet遍历key和value
+         for (Map.Entry&lt;Integer, String&gt; entry : 
+                                        map.entrySet()) {
+             System.out.println(&quot;key= &quot; + entry.getKey() + &quot; 
+                    and value= &quot; + entry.getValue());
+         }
+         // 第四种:通过Map.values()遍历所有的value
+         //但不能遍历key&quot;);
+         for (String v : map.values()) {
+             System.out.println(&quot;value= &quot; + v);
+         }
+     }
+ }
+</code></pre><p>如何边遍历边移除 Collection中元素</p>
+<pre><code>边遍历边修改 Collection 的唯一正确方式是使用 Iterator.remove() 方法，如下：
+Iterator&lt;Integer&gt; it = list.iterator();
+    while(it.hasNext()){
+         *// do something*
+          it.remove();
+        }
+</code></pre>
+<p>Iterator 和 ListIterator 有什么区别？</p>
+<ul>
+<li>Iterator 可以遍历 Set 和 List 集合，而 ListIterator 只能遍历 List。</li>
+<li>Iterator 只能单向遍历，而 ListIterator 可以双向遍历（向前/后遍历）。</li>
+<li>ListIterator 实现 Iterator 接口，然后添加了一些额外的功能，比如添加一个元素、替换一个元素、获取前面或后面元素的索引位置。</li>
+</ul>
+<p>Java集合的快速失败机制 “fail-fast</p>
+<pre><code>    是java集合的一种错误检测机制，当多个线程对集合进行结构上的改变的操作时，有可能会产生 fail-fast 机制。
+
+例如：假设存在两个线程（线程1、线程2），线程1通过Iterator在遍历集合A中的元素，在某个时候线程2修改了集合A的结构（是结构上面的修改，而不是简单的修改集合元素的内容），那么这个时候程序就会抛出 ConcurrentModificationException 异常，从而产生fail-fast机制。
+
+原因：迭代器在遍历时直接访问集合中的内容，并且在遍历过程中使用一个 modCount 变量。集合在被遍历期间如果内容发生变化，就会改变modCount的值。每当迭代器使用hashNext()/next()遍历下一个元素之前，都会检测modCount变量是否为expectedmodCount值，是的话就返回遍历；否则抛出异常，终止遍历。
+
+解决办法：
+
+1.在遍历过程中，所有涉及到改变modCount值得地方全部加上synchronized。
+
+2.使用CopyOnWriteArrayList来替换ArrayList
+</code></pre>
+<hr>
+<h1 id="collections工具类">Collections——工具类</h1>
+<p>Collection 和 Collections 有什么区别？</p>
+<ul>
+<li>java.util.Collection 是一个集合接口（集合类的一个顶级接口）。它提供了对集合对象进行基本操作的通用接口方法。Collection接口在Java 类库中有很多具体的实现。Collection接口的意义是为各种具体的集合提供了最大化的统一操作方式，其直接继承接口有List与Set。</li>
+<li>Collections则是集合类的一个工具类/帮助类，其中提供了一系列静态方法，用于对集合中元素进行排序、搜索以及线程安全等各种操作</li>
+</ul>
+<p>Collections特殊方法：</p>
+<ul>
+<li>void sort（）； //对List容器内的元素排序</li>
+<li>void shuffle（） //对List容器内的对象进行随机排列</li>
+<li>void reverse（） //对List容器内的对象进行逆序排列</li>
+<li>void fill（）； //用一个特定的对象重写整个List容器</li>
+<li>void copy（）； //将src List 容器内容拷贝到dest List容器。</li>
+<li>int binarySearch（List，Object）； //对与顺序的List容器，采用折半查找的方法查找特定对象。</li>
+</ul>
+<hr>
+<h2 id="comparable接口">Comparable接口</h2>
+<p>Comparble 接口：实现这个接口的类可以互相比较大小；</p>
+<p>Comparable接口中只有一个方法：</p>
+<pre><code> public    int    comparableTo（Object    obj）；
+</code></pre>
+<p>Comparable 可以实现按照数字排序，也可以实现按照字母或字符串的排序。</p>
+<p>按照字符串排序语言调用字符串的 compareTo方法</p>
+<p>TreeMap 和 TreeSet 在排序时如何比较元素？Collections 工具类中的 sort()方法如何比较元素？</p>
+<pre><code>TreeSet 要求存放的对象所属的类必须实现 Comparable 接口，该接口提供了比较元素的 compareTo()方法，当插入元素时会回调该方法比较元素的大小。TreeMap 要求存放的键值对映射的键必须实现 Comparable 接口从而根据键对元素进 行排 序。
+
+Collections 工具类的 sort 方法有两种重载的形式，
+
+第一种要求传入的待排序容器中存放的对象比较实现 Comparable 接口以实现元素的比较；
+
+第二种不强制性的要求容器中的元素必须可比较，但是要求传入第二个参数，参数是Comparator 接口的子类型（需要重写 compare 方法实现元素的比较），相当于一个临时定义的排序规则，其实就是通过接口注入比较元素大小的算法，也是对回调模式的应用（Java 中对函数式编程的支持）。
+</code></pre>
+<hr>
+<pre><code>                                            关注博主
+                                            持续变强
+                                            😊   👍
+</code></pre>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>
